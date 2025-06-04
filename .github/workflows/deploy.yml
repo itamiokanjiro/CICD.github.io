@@ -20,6 +20,8 @@ jobs:
 
       - name: 安裝 Hexo 並產生靜態檔
         run: |
+          npm install hexo-cli -g
+          npm install
           hexo g
 
       - name: 上傳到 SFTP 伺服器
